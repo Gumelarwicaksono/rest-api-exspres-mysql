@@ -3,13 +3,13 @@ const app = exspress();
 const port = 3000;
 
 app.get('/', (req, res) => {
-  res.sendFile('./public/index.html', { root: __dirname });
+  res.sendFile('./index.html', { root: __dirname });
 });
 app.get('/about', (req, res) => {
-  res.sendFile('./public/about.html', { root: __dirname });
+  res.sendFile('./about.html', { root: __dirname });
 });
 app.get('/contact', (req, res) => {
-  res.sendFile('./public/contact.html', { root: __dirname });
+  res.sendFile('./contact.html', { root: __dirname });
 });
 
 app.use((req, res, next) => {
