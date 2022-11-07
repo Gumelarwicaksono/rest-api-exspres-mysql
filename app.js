@@ -1,6 +1,6 @@
 const exspress = require('express');
 const app = exspress();
-const port = 18320;
+const port = 3000;
 
 app.get('/', (req, res) => {
   res.sendFile('./index.html', { root: __dirname });
@@ -18,6 +18,6 @@ app.use((req, res, next) => {
   });
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`App runing at : http://localhost:${port}`);
 });
