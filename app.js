@@ -1,20 +1,19 @@
-const exspress = require('express');
-const app = exspress();
+const express = require('express');
+const path = require('path');
+const app = express();
+const loger = require('morgan');
+const producrouterV2 = require('./app/product-v2/routes');
 const port = 3000;
 
-app.get('/', (req, res) => {
-  res.sendFile('./index.html', { root: __dirname });
-});
-app.get('/about', (req, res) => {
-  res.sendFile('./about.html', { root: __dirname });
-});
-app.get('/contact', (req, res) => {
-  res.sendFile('./contact.html', { root: __dirname });
-});
-
+app.use(loger('dev'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use('/public', express.static(path.join(__dirname, 'uploads')));
+app.use('/api/v2', producrouterV2);
 app.use((req, res, next) => {
   res.send({
-    page: 'Page Not Found',
+    status: 'filed',
+    mesage: 'Resource' + req.originalUrl + 'Not Found',
   });
 });
 

@@ -1,1 +1,4 @@
 /node_modules
+/app/product
+/config/conection.js
+/app/user
